@@ -8,8 +8,18 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+	  <th>follows</th>
+	  <th><%= link_to user.followings.count, [user, :followings] %></th>
+  </tr>
+  <tr>
+	  <th>followers</th>
+	  <th><%= link_to user.followers.count, [user, :followers] %></th>
+  </tr>
 </table>
 
+<% if user_signed_in? && current_user == user %>
 <div class='row'>
   <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
 </div>
+<% end %>
